@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 class ContactForm extends Component {
@@ -10,8 +11,8 @@ class ContactForm extends Component {
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
-      [name]: value,
       id: uuidv4(),
+      [name]: value,
     });
   };
 
@@ -59,5 +60,9 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  state: PropTypes.objectOf(PropTypes.string),
+};
 
 export default ContactForm;
